@@ -2,13 +2,14 @@
 
 namespace Welp\MailchimpBundle\Event;
 
-use Symfony\Component\EventDispatcher\Event;
+//use Symfony\Component\EventDispatcher\Event;
+use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Welp\MailchimpBundle\Subscriber\Subscriber;
 
 /**
  * Event for User unit sync
  */
-class SubscriberEvent extends Event
+class SubscriberEvent implements EventSubscriberInterface
 {
     /**
      * Event to subscribe a User
@@ -108,5 +109,10 @@ class SubscriberEvent extends Event
     public function getOldEmail()
     {
         return $this->oldEmail;
+    }
+    
+    public static function getSubscribedEvents()
+    {
+        return [];
     }
 }
